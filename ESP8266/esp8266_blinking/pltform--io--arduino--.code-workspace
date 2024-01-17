@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "pltform--io--arduino--",
+			"path": "../../pltform--io--arduino--"
+		},
+		{
+			"name": "esp8266_blinking",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
