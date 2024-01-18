@@ -1,0 +1,115 @@
+C51 COMPILER V9.60.7.0   BLINKING_PRC                                                      09/20/2023 00:20:52 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BLINKING_PRC
+OBJECT MODULE PLACED IN .\Objects\Blinking_Prc.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Blinking_Prc.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\Blinking_Prc.lst) TABS(2) OBJECT(.\Objects\Blinking_Prc.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include <8051>
+*** WARNING C318 IN LINE 2 OF Blinking_Prc.c: can't open file '8051'
+   3          
+   4          sbit led = P3^7;
+   5          sbit bt = P1^0;
+   6           void delay(void)
+   7          {
+   8   1        int i,j;
+   9   1        for(i=0;i<500;i++)
+  10   1          for(j=0;j<100;j++);
+  11   1        
+  12   1       }
+  13           
+  14           void main()
+  15           { 
+  16   1         P3=0xff;
+  17   1          int ct=0;
+*** ERROR C141 IN LINE 17 OF Blinking_Prc.c: syntax error near 'int', expected '__asm'
+*** ERROR C202 IN LINE 17 OF Blinking_Prc.c: 'ct': undefined identifier
+  18   1         //count=1;
+  19   1         while(1){
+  20   2           
+  21   2           if(count==4)
+*** ERROR C202 IN LINE 21 OF Blinking_Prc.c: 'count': undefined identifier
+  22   2              P3=0xf7;
+  23   2           
+  24   2         P2=0xff;
+  25   2           
+  26   2         if(bt==0){
+  27   3           
+  28   3                P2=0x40;
+  29   3                  delay();
+  30   3              P2=0xff;
+  31   3              delay();
+  32   3                P2=0xf9; 
+  33   3                  delay();
+  34   3              P2=0xff;
+  35   3              delay();
+  36   3                P2=0x24; 
+  37   3                  delay();
+  38   3              P2=0xff;
+  39   3              delay();
+  40   3                P2=0x30; 
+  41   3                  delay();
+  42   3              P2=0xff;
+  43   3              delay();
+  44   3                P2=0x19; 
+  45   3                  delay();
+  46   3              P2=0xff;
+  47   3              delay();
+  48   3                P2=0x12; 
+  49   3                  delay();
+  50   3              P2=0xff;
+C51 COMPILER V9.60.7.0   BLINKING_PRC                                                      09/20/2023 00:20:52 PAGE 2   
+
+  51   3              delay();
+  52   3                P2=0x02; 
+  53   3                  delay();
+  54   3              P2=0xff;
+  55   3              delay();
+  56   3                P2=0xf8; 
+  57   3                  delay();
+  58   3              P2=0xff;
+  59   3              delay();
+  60   3                P2=0x80; 
+  61   3                  delay();
+  62   3              P2=0xff;
+  63   3              delay();
+  64   3                P2=0x10; 
+  65   3                  delay();
+  66   3              P2=0xff;
+  67   3              delay();
+  68   3                P2=0x08;
+  69   3                  delay();
+  70   3              P2=0xff;
+  71   3              delay();
+  72   3                P2=0x80;
+  73   3                  delay();
+  74   3              P2=0xff;
+  75   3              delay();
+  76   3                P2=0x46;
+  77   3                  delay();
+  78   3              P2=0xff;
+  79   3              delay();
+  80   3                P2=0x40;
+  81   3                  delay();
+  82   3              P2=0xff;
+  83   3              delay();
+  84   3                P2=0x06;
+  85   3                  delay();
+  86   3              P2=0xff;
+  87   3              delay();
+  88   3                P2=0x0e;
+  89   3                  delay();
+  90   3              P2=0xff;
+  91   3              delay();
+  92   3            }
+  93   2      
+  94   2      
+  95   2          }
+  96   1       }
+  97          
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  3 ERROR(S)

@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\ON_OFF.obj" 
+TO ".\Objects\At89S52_programm" 
+PRINT(".\Listings\At89S52_programm.m51") RAMSIZE(256) 
+CODE( 0X0000-0X1FFF )

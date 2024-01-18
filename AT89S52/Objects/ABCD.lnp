@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\ABCD.obj" 
+TO ".\Objects\ABCD" 
+PRINT(".\Listings\ABCD.m51") RAMSIZE(256) 
+CODE( 0X0000-0X1FFF )
