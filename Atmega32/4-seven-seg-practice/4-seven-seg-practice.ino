@@ -1,5 +1,5 @@
   const int segmentPins[] = {2, 3, 4, 5};//seg 1,2,3,4(from left)
-  const int digitPins[] = {8, 9, 10, 11};//(0----9)
+  const int digitPins[] = {8, 9, 10, 11};//digit pin(1,2,4,8)
 
   const byte digitSegments[12] = {
     0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0X09,0x0C,0x0A};
