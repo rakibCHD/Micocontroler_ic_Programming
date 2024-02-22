@@ -1,8 +1,8 @@
   const int segmentPins[] = {2, 3, 4, 5};//seg 1,2,3,4(from left)
-  const int digitPins[] = {8, 9, 10, 11};//(0....9)
+  const int digitPins[] = {8, 9, 10, 11};
 
-  const byte digitSegments[10] = {
-    0x00,0x08,0x04,0x0C,0x02,0x0A,0x06,0x0E,0x01,0X09};
+  const byte digitSegments[12] = {
+    0x00,0x08,0x04,0x0C,0x02,0x0A,0x06,0x0E,0x01,0X09,0x03,0x05};
 
  void setup() {
   Serial.begin(9600);
@@ -14,14 +14,14 @@
       }
 }
 
- void displayDigit(int digit, int value) {
+ void displayDigit(int segment, int value) {
       for (int i = 0; i < 4; i++) {
         digitalWrite(segmentPins[i], LOW);
       }
       for (int i = 0; i < 10; i++) {
         digitalWrite(digitPins[i], bitRead(digitSegments[value], i));
       }
-      digitalWrite(segmentPins[digit-1],HIGH);
+      digitalWrite(segmentPins[segment-1],HIGH);
       delay(5);
     }
 
@@ -35,39 +35,40 @@
         if(isdigit(val[i]))
            ss+=val[i];
       }
+      if(ss.length()<=4)
+      {
+        if(ss=="0000")
+        for(int i=0;i<4;i++)
+          displayDigit(i+1,0);
       
-      if(ss=="0000")
-      for(int i=0;i<4;i++)
-        displayDigit(i+1,0);
-    
-      if(ss=="000")
-        for(int i=0;i<3;i++)
-            displayDigit(i+1,0);
-            
-      if(ss=="00")
-        for(int i=0;i<2;i++)
-            displayDigit(i+1,0);
-            
-      if(ss=="0"&& ss[0]!='0')
-            displayDigit(1,0);
-            
-      if(ss.length()==1 &&ss[0]=='0')
-        displayDigit(ss.length(),0);
-        
-      if(ss.length()<=4 &&ss[0]=='0' && ss[1]!='0')
-        displayDigit(ss.length(),0);
-        
-      if(ss.length()<=4 && ss[0]=='0' && ss[1]=='0' && ss[2]!='0' )
-      {
-        displayDigit(ss.length(),0);
-        displayDigit(ss.length()-1,0);
-      }
-      if(ss.length()==4 &&ss[0]=='0' && ss[1]=='0' && ss[2]=='0' && ss[3]!='0' )
-      {
-        displayDigit(ss.length(),0);
-        displayDigit(ss.length()-1,0);
-        displayDigit(ss.length()-2,0);
-      }
+        if(ss=="000")
+          for(int i=0;i<3;i++)
+              displayDigit(i+1,0);
+              
+        if(ss=="00")
+          for(int i=0;i<2;i++)
+              displayDigit(i+1,0);
+              
+        if(ss=="0"&& ss[0]!='0')
+              displayDigit(1,0);
+              
+        if(ss.length()==1 &&ss[0]=='0')
+          displayDigit(ss.length(),0);
+          
+        if(ss.length()<=4 &&ss[0]=='0' && ss[1]!='0')
+          displayDigit(ss.length(),0);
+          
+        if(ss.length()<=4 && ss[0]=='0' && ss[1]=='0' && ss[2]!='0' )
+        {
+          displayDigit(ss.length(),0);
+          displayDigit(ss.length()-1,0);
+        }
+        if(ss.length()==4 &&ss[0]=='0' && ss[1]=='0' && ss[2]=='0' && ss[3]!='0' )
+        {
+          displayDigit(ss.length(),0);
+          displayDigit(ss.length()-1,0);
+          displayDigit(ss.length()-2,0);
+        }
       
       number=ss.toInt();
       
@@ -79,6 +80,16 @@
           displayDigit(count+1,rem);
           count++;
          }
+
+      }
+      else
+      {
+        displayDigit(1,10);
+        displayDigit(2,11);
+        displayDigit(3,10);
+        displayDigit(4,11);
+      }
+      
     }
 
 void loop() {
