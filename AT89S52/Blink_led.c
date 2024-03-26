@@ -1,21 +1,25 @@
 #include <REGX52.H>
 
+sbit led = P1^0;
  
- void delay(void)
+ void delay(unsigned int);
+
+
+ void delay(unsigned int mstime)
 {
-  int i, j;
-  for(i=0; i<1000; i++)
-    for(j=0; j<1000; j++);
+  unsigned int i, j;
+  for(i=0; i<mstime; i++)
+    for(j=0; j<165; j++);   //it's for 1ms delay
  }
- 
+
  void main()
  {
    while(1)
   {
-    P1=0x01;  //set port P1.0, blue LED ON & red LED OFF
-    delay();
-    P1=0x00;  //set port P1.3, blue LED OFF & red LED ON
-    delay();
+		led=1;
+    delay(2000);
+		led=0;
+    delay(1000);
   }
  }
 
